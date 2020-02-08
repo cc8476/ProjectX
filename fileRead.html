@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+    test() 方法用于检测一个字符串是否匹配某个模式.
+    返回一个 Boolean 值，它指出在被查找的字符串中是否匹配给出的正则表达式。 
+    regexp.test(str)
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FileReader</title>
+</head>
+
+<body>
+    <input id="input" type="file">
+
+    <script>
+        const input = document.querySelector('input[type=file]')
+        input.addEventListener('change', () => {
+            console.log(input.files)
+            const reader = new FileReader();
+
+            let type = input.files[0].type;
+            console.log("input.files[0]",input.files[0]);
+            if (/image/i.test(type)) {
+                reader.readAsDataURL(input.files[0]) // input.files[0]为第一个文件
+                reader.onload = () => {
+                    const img = new Image()
+                    img.src = reader.result//这个reader.result就是base64编码后的结果
+                    document.body.appendChild(img)  // reader.result为获取结果
+                }
+            }
+            else if (/text/i.test(type)) {
+                reader.readAsText(input.files[0], 'utf8') // input.files[0]为第一个文件
+                reader.onload = () => {
+                    document.body.innerHTML += reader.result  // reader.result为获取结果
+                }
+            }
+        }, false)
+
+    </script>
+</body>
+
+</html>
