@@ -1,14 +1,3 @@
-var arr=[1,5,1,22,2];
+let arr= [];
 
-var result= arr.sort(
-    (a,b)=>{
-        if(a>b) {
-            return -1;
-        }
-        else {
-            return 1;
-        }
-    }
-)
-
-console.log(result);
+console.log(arr==false);
