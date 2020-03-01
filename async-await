@@ -1,0 +1,63 @@
+/**
+ * 
+ * 函数前面的async一词意味着一个简单的事情：这个函数总是返回一个promise，如果代码中有return <非promise>语句，JavaScript会自动把返回的这个value值包装成promise的resolved值;调用就像普通函数一样调用,但是后面可以跟then()了
+ * 
+ * 
+ */
+
+async function fn() {
+    return 1111;
+}
+
+
+fn().then(
+    (data)=>{
+        console.log(data)
+    }
+)
+
+
+/**
+ *
+ * await只能在async函数里使用,它可以让JavaScript进行等待，直到一个promise执行并返回它的结果，JavaScript才会继续往下执行 
+ */
+
+async function f() {    // await 只能在async函数中使用
+    let promise = new Promise((resolve, reject) => {
+        setTimeout(() => resolve('done!'), 1000)
+    })
+    let result = await promise   //  直到promise返回一个resolve值（*）才会执行下一句
+    console.log(result)
+}
+f() 
+
+
+function getSomething() {
+    return "something";
+}
+async function testAsync() {
+    return Promise.resolve("hello async");
+}
+const xxx = {a:1,b:2}
+async function test() {
+    const v1 = await getSomething();   // await 后跟普通函数的返回值
+    const v2 = await testAsync();     // await 后跟异步函数的返回值
+    console.log("testAsync");
+    const v2_1 = await new Promise(
+        (resolve) =>{
+            setTimeout(
+                ()=>{
+                    resolve()
+                },2222
+            )
+
+        }
+    )
+
+        
+
+    console.log("testAsync");
+    const v3 = await  xxx
+    console.log(v1, v2,v3);
+}
+test();

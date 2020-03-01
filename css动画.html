@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"> 
+<style> 
+
+
+.move_left
+{
+	width:100px;
+	height:100px;
+	background:blue;
+	transition:width 2s;
+	-webkit-transition:width 2s; /* Safari */
+    word-wrap: break-word;
+}
+
+.move_left:hover
+{
+	width:200px
+}
+
+.move_transform
+{
+    word-wrap: break-word;
+	width:100px;
+	height:100px;
+	background:red;
+	transition:transform 2s;
+	-webkit-transition:transform 2s; /* Safari */
+}
+
+.move_transform:hover
+{
+	transform:translate(-100px,0)
+}
+</style>
+</head>
+<body>
+
+    <p>
+
+        在使用css3 transtion做动画效果时，transform实现的动画是与合成器线程相关的，不需要等待主线程样式计算或者 JS 执行，计算速度是很快的；而使用height，width，margin和padding时，导致布局和绘制的调整，主线程需要重新计算样式并且执行JS，计算速度自然就慢了
+
+    </p>
+
+
+
+<div>
+<div style='display:inline-block' class='move_left'>transtion:width 2s</div>
+<div style='display:inline-block' class='move_transform'>transtion:transform 2s</div>
+</div>
+
+</body>
+</html>
