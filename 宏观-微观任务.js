@@ -9,6 +9,8 @@ new Promise(resolve => {
 
 console.log(2)
 
+return;
+
 //为什么4，3要慢？
 /* promise是微任务
 

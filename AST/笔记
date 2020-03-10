@@ -1,0 +1,35 @@
+const a = 1
+1.词法分析阶段
+字符组成的字符串分解成一个个代码块  :分解const, a , =, 1  4个词法单元
+
+2.语法分析阶段：
+将词法单元流转换成一个由元素逐级嵌套组成的语法结构树，也就是AST
+
+3.代码生成阶段：将 AST 转换成一系列可执行的机器指令代码
+
+recast 的关键api
+
+let code =`let a =1`
+1.recast.parse(code)  解析code成ast
+2.recast.print(ast).code
+3.recast.prettyPrint  功能和print类似，多了一层美化code的作用
+
+
+困死了：https://juejin.im/post/5d50d1d9f265da03aa25607b  后面继续看吧
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////
+所有ast 结构属性的查询：https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/SpiderMonkey/Parser_API
+查询code语句对应的ast结构：
+https://astexplorer.net/
+
+
+builder的相关文档：
+https://developer.mozilla.org/zh-CN/docs/Mozilla/Projects/SpiderMonkey/Parser_API#Builder_objects
+https://github.com/benjamn/ast-types/blob/master/gen/builders.ts
