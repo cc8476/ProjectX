@@ -20,7 +20,7 @@ const promise2 = ()=>{
     setTimeout(() => {
         console.log("222")
         reject(2)
-    },1111)
+    },2222)
     })
 }
 
@@ -29,12 +29,12 @@ const promise3 = ()=>{
     setTimeout(() => {
         console.log("333")
         resolve(3)
-    },1111)
+    },3333)
     })
 }
 
 
-var arr=[promise1,promise2,promise3];
+ var arr=[promise1,promise2,promise3];
 
 
 var fn=async function(arr){
@@ -52,8 +52,8 @@ var fn=async function(arr){
     return result;
 
 
- }   
- let r= fn(arr).then(
+ }    
+  let r= fn(arr).then(
      ()=>{
          console.log("done!!!")
      }
@@ -61,5 +61,19 @@ var fn=async function(arr){
     ()=>{
         console.log("catch")
     }
-)
+) 
 
+
+//并行，比较简单
+//并行，比较简单
+//并行，比较简单
+var arr=[promise1(),promise2(),promise3()];
+Promise.all(arr).then(
+    ()=>{
+        console.log('done')
+    }
+).catch(
+    ()=>{
+        console.log("error")
+    }
+)
