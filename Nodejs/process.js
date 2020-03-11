@@ -10,4 +10,16 @@ console.log(process.argv);
     '3'
   ] */
 
-console.log(process)
+//console.log(process)
+
+
+//进程常驻
+process.stdin.on('data',
+  (e)=>{
+    if(e.toString().trim()=="exit") {
+      console.log("退出！")
+      process.exit();
+    }
+    //打印命令行输入
+  }
+)
