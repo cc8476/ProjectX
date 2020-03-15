@@ -20,7 +20,27 @@ a(
 
 
 //链式调用，使用promise
+//promise 内，即使写了resolve()和reject()2个状态，只会认定第一个执行的状态
 
+
+let p = new Promise(
+  (r,rr)=>{
+    rr();
+  }
+)
+
+p.then(
+  (e)=>{
+    return e
+    //或throw new Error('1111')
+  }
+);
+/* 
+执行then和catch 会返回一个新的promise,该promise的状态由then和catch的回调函数执行结果决定：
+1.return xxxx 则状态是resolve
+2.throw new Error,则状态是reject
+如果then或者catch中返回了一个Promise,该promise会和then或者catch return 的Promise状态保持一致
+ */
 function interview(num) {
 
     return new Promise(
